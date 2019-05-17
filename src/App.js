@@ -1,5 +1,8 @@
 import React from 'react'
 import searchYoutube from 'youtube-api-v3-search'
+import axios from 'axios'
+
+const SERVER_URL = 'http://localhost:3001'
 
 class App extends React.Component {
   state = {
@@ -18,6 +21,17 @@ class App extends React.Component {
       this.setState({
         data: data.items
       })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  handleClickDownload = async vidId => {
+    try {
+      const res = await axios.post(
+        `${SERVER_URL}/api/${vidId}`
+      )
+      console.log(res)
     } catch (error) {
       console.error(error)
     }
@@ -42,7 +56,13 @@ class App extends React.Component {
             >
               <h2>{i.snippet.title}</h2>
               <h5>{i.snippet.description}</h5>
-              <div>{i.id.videoId}</div>
+              <button
+                onClick={() =>
+                  this.handleClickDownload(i.id.videoId)
+                }
+              >
+                {i.id.videoId}
+              </button>
               <img
                 src={i.snippet.thumbnails.default.url}
                 alt={i.snippet.title}
