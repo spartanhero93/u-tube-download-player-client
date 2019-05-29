@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import searchYoutube from 'youtube-api-v3-search'
 import { RenderItems } from './components/RenderItems'
 import { KEY } from './key'
-// const SERVER_URL = 'http://localhost:3001'
+
+import Header from './components/Header'
 
 function App () {
   const [data, handleData] = useState({})
@@ -21,7 +22,7 @@ function App () {
   console.log(data)
   return (
     <div>
-      <h1>Text: {text}</h1>
+      <Header />
       <input
         type='text'
         onChange={e => handleText(e.target.value)}
