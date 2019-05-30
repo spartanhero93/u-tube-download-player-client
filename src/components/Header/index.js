@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Link from 'react-router-dom'
+import { VideoPlayer } from '../Videos'
 
 const style = {
   h1: {
@@ -16,6 +18,21 @@ const style = {
 }
 
 function Header () {
+  const [data, handleData] = useState({})
+
+  const fetchData = async () => {
+    try {
+      const data = await fetch(
+        'http://localhost:3001/api/stream',
+
+        { credentials: 'same-origin' }
+      )
+      handleData(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const { container, h1, listContainer } = style
   return (
     <div style={container}>
@@ -25,7 +42,8 @@ function Header () {
           <h4>Home</h4>
         </div>
         <div>
-          <h4>Videos</h4>
+          <button>Videos</button>
+          <VideoPlayer />
         </div>
         <div>
           <h4>Audio</h4>
