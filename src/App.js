@@ -23,13 +23,8 @@ function App () {
   return (
     <div>
       <Header />
-      <input
-        type='text'
-        onChange={e => handleText(e.target.value)}
-      />
-      <button onClick={() => requestData(text)}>
-        Search!
-      </button>
+      <input type='text' onChange={e => handleText(e.target.value)} />
+      <button onClick={() => requestData(text)}>Search!</button>
       <RenderItems items={data.items} />
     </div>
   )
