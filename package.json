@@ -30,7 +30,7 @@
     ]
   },
   "devDependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "styled-components": "^4.3.2",
     "youtube-api-v3-search": "^1.2.1"
   }
